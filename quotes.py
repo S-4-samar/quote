@@ -97,10 +97,66 @@ template_css = """
 """
 st.markdown(template_css, unsafe_allow_html=True)
 
-# Sidebar content with blue neon glow
-st.sidebar.markdown("## About this App")
-st.sidebar.markdown("""
-I've created this app at **11 PM**.  
+st.markdown("""
+<style>
+section[data-testid="stSidebar"] {
+    border: 3px solid red;
+    border-radius: 20px;
+    box-shadow: 0 0 20px red, 0 0 40px red, 0 0 60px red;
+    padding: 0;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.about-box {
+    padding: 20px;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 2px solid cyan;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 20px cyan;
+    font-size: 14px;
+}
+
+.about-box h2 {
+    font-size: 20px;
+    margin: 8px 0;
+}
+
+.about-box p {
+    margin: 6px 0;
+}
+
+.about-box ul {
+    padding-left: 18px;
+}
+
+.about-box ul li {
+    margin: 4px 0;
+}
+
+.about-box hr {
+    margin: 8px 0;
+}
+
+@media screen and (max-width: 600px) {
+    .about-box {
+        height: 70vh;
+        font-size: 13px;
+    }
+}
+</style>
+""", unsafe_allow_html=True)
+
+# 2️⃣ Sidebar content inside the styled box:
+with st.sidebar:
+    st.markdown('<div class="about-box">', unsafe_allow_html=True)
+    st.markdown("## About this App")
+    st.markdown("""
+I’ve created this app at **11 PM**.  
 Honestly... just felt like making something a little extra sweet and a little extra cheeky.  
 
 **Some Jokes 4 you:**  
@@ -112,8 +168,8 @@ Honestly... just felt like making something a little extra sweet and a little ex
 
 - Is your name WiFi?  
   *Because I’m feeling a connection.*  
-""")
-
+    """)
+    st.markdown('</div>', unsafe_allow_html=True)
 # Neon stars background
 background_stars = ""
 for _ in range(80):
