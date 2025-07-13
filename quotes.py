@@ -110,21 +110,14 @@ st.markdown(template_css, unsafe_allow_html=True)
 
 with st.sidebar:
     st.markdown("""
-    <div class="about-box">
-        <h2>About this App</h2>
-        <p>I’ve created this app at <strong>11 PM</strong>.<br>
-        Honestly... just felt like making something a little extra sweet and a little extra cheeky.</p>
+<div style='margin-top: 20px;'>
+    <h2>Some Jokes 4 You:</h2>
+    <p> Are you a campfire?<br><em>Because you’re hot and I want s’more.</em></p>
+    <p> If kisses were snowflakes...<br><em>I’d send you a blizzard.</em></p>
+    <p> Is your name WiFi?<br><em>Because I’m feeling a connection.</em></p>
+</div>
+""", unsafe_allow_html=True)
 
-        <hr>
-
-        <h2>Some Jokes 4 You:</h2>
-        <ul>
-            <li>Are you a campfire? <br><em>Because you’re hot and I want s’more.</em></li>
-            <li>If kisses were snowflakes... <br><em>I’d send you a blizzard. ❄️</em></li>
-            <li>Is your name WiFi? <br><em>Because I’m feeling a connection.</em></li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
 
 background_stars = ""
 for _ in range(80):
