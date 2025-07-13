@@ -3,7 +3,6 @@ import random
 
 st.set_page_config(page_title="💖 Love Quote Generator", layout="centered")
 
-# Inject custom CSS
 st.markdown("""
     <style>
     body {
@@ -23,6 +22,7 @@ st.markdown("""
         0% { opacity: 0.2; }
         100% { opacity: 1; }
     }
+
     div.stButton > button {
         width: 100%;
         max-width: 300px;
@@ -41,6 +41,7 @@ st.markdown("""
         box-shadow: 0px 6px 20px rgba(0, 255, 255, 0.8);
         cursor: pointer;
     }
+
     .quote-box {
         padding: 20px;
         border-radius: 20px;
@@ -57,17 +58,19 @@ st.markdown("""
         margin-right: auto;
         text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
     }
+
     h1 {
         text-align: center;
         color: white;
         font-size: 28px;
         text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
     }
+
     canvas {
         transform: scale(0.5);
     }
 
-    /* Sidebar Outer Neon Blue */
+    /* Sidebar Outer Blue Neon */
     section[data-testid="stSidebar"] {
         background: black !important;
         border-right: 1px solid rgba(255,255,255,0.2);
@@ -75,15 +78,14 @@ st.markdown("""
         padding: 0;
     }
 
-    /* Sidebar Inner Box Red Neon */
+    /* About Box Full Inside Red Neon Wrap */
     .about-box {
         padding: 20px;
-        margin: 15px;
+        margin: 20px;
         border-radius: 15px;
         background: rgba(0, 0, 0, 0.5);
-        box-shadow: inset 0 0 15px red;
-        color: #fff;
-        text-shadow: 0 0 5px red;
+        box-shadow: inset 0 0 25px red, inset 0 0 40px red;
+        color: white;
     }
 
     @media screen and (max-width: 600px) {
@@ -102,7 +104,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Sidebar content
 with st.sidebar:
     st.markdown('<div class="about-box">', unsafe_allow_html=True)
     st.markdown("## About this App", unsafe_allow_html=True)
@@ -112,16 +113,13 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     st.markdown("""
-    <div style='margin-top: 20px;'>
-        <h2>Some Jokes 4 You:</h2>
-        <p>🔥 Are you a campfire?<br><em>Because you’re hot and I want s’more.</em></p>
-        <p>❄️ If kisses were snowflakes...<br><em>I’d send you a blizzard.</em></p>
-        <p>📶 Is your name WiFi?<br><em>Because I’m feeling a connection.</em></p>
-    </div>
+    <p>🔥 Are you a campfire?<br><em>Because you’re hot and I want s’more.</em></p>
+    <p>❄️ If kisses were snowflakes...<br><em>I’d send you a blizzard.</em></p>
+    <p>📶 Is your name WiFi?<br><em>Because I’m feeling a connection.</em></p>
     """, unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
-# Neon stars background
+# Neon stars
 background_stars = ""
 for _ in range(80):
     while True:
@@ -161,7 +159,6 @@ if st.button("💌 Show Me a Message"):
     selected_quote = random.choice(quotes)
     st.markdown(f"<div class='quote-box'>{selected_quote}</div>", unsafe_allow_html=True)
     st.balloons()
-    st.markdown("<div style='height:30px;'></div>", unsafe_allow_html=True)
 
 with open("tumheho.mp3", "rb") as audio_file:
     st.audio(audio_file, format="audio/mp3")
