@@ -3,6 +3,24 @@ import random
 
 st.set_page_config(page_title="💖 Love Quote Generator", layout="centered")
 
+# Sidebar content
+st.sidebar.markdown("## About this App")
+st.sidebar.markdown("""
+I've created this app at **11 PM**.  
+I was feeling something different...  
+So I came up with this little surprise 💡.
+
+**Bonus Jokes:**  
+- Why don’t programmers like nature?  
+  *It has too many bugs!* 🐞
+
+- Why do Java developers wear glasses?  
+  *Because they don’t C#!* 🤓
+
+- I told my code a joke once...  
+  *It didn’t respond. Guess it was a static method!* 🤖
+""")
+
 # Custom CSS for Neon Stars, UI, and Responsiveness
 template_css = """
     <style>
@@ -114,6 +132,7 @@ quotes = [
     "😏 Your voice turns me on more than any song ever could.",
     "❤️‍🔥 I can’t decide what I crave more... your lips or your hands.",
     "💥 My bed feels empty without you in it... should we fix that?",
+    "⚡ I was trying to concentrate... then I remembered how good you look without clothes.",
     "🖤 Just thinking about last night has me blushing... and wanting a repeat.",
     "🔥 Your name should come with a warning label: 'Highly Addictive, Handle With Care.'"
 ]
