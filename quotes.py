@@ -3,19 +3,19 @@ import random
 
 st.set_page_config(page_title="💖 Love Quote Generator", layout="centered")
 
+# Custom CSS for neon effects: blue for stars/buttons, mid-red for About box only
 template_css = """
     <style>
     body {
         background: radial-gradient(circle at center, #1a1a1a, #000);
         overflow: hidden;
         font-family: 'Poppins', sans-serif;
-        margin: 0;
     }
     .background-stars span {
         position: absolute;
         color: #fff;
         font-size: 8px;
-        text-shadow: 0 0 3px #0ff, 0 0 6px #0ff, 0 0 12px #0ff;
+        text-shadow: 0 0 3px #0ff, 0 0 8px #0ff, 0 0 12px #0ff;
         animation: blink 1.5s infinite alternate;
     }
     @keyframes blink {
@@ -38,49 +38,36 @@ template_css = """
     div.stButton > button:hover {
         transform: scale(1.05);
         box-shadow: 0px 6px 20px rgba(0, 255, 255, 0.8);
-        cursor: pointer;
     }
     .quote-box {
         padding: 20px;
         border-radius: 20px;
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.1);
         color: white;
         font-size: 18px;
         text-align: center;
         margin-top: 20px;
-        box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
+        box-shadow: 0px 8px 32px 0 rgba(0, 255, 255, 0.5);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.18);
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
-        text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
     }
     h1 {
         text-align: center;
         color: white;
         font-size: 28px;
-        text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
     }
-    canvas {
-        transform: scale(0.5);
-    }
-    section[data-testid="stSidebar"] {
-        background: black !important;
-        box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
-    }
-    .sidebar-about-box {
+    /* Red neon for About box only */
+    .about-box {
         padding: 20px;
-        margin: 10px;
         border-radius: 15px;
         background: rgba(255, 255, 255, 0.05);
-        box-shadow: 
-            inset 0 0 15px #ff3333,
-            inset 0 0 30px #ff3333,
-            0 0 20px #ff3333;
-    }
-    section[data-testid="stSidebar"] .block-container {
-        color: #fff;
+        border: 2px solid rgba(255, 50, 50, 0.5);
+        box-shadow:
+            inset 0 0 15px rgba(255, 50, 50, 0.7),
+            inset 0 0 30px rgba(255, 50, 50, 0.5);
     }
     @media screen and (max-width: 600px) {
         .quote-box {
@@ -99,8 +86,9 @@ template_css = """
 """
 st.markdown(template_css, unsafe_allow_html=True)
 
+# Sidebar with neon-wrapped About box
 with st.sidebar:
-    st.markdown('<div class="sidebar-about-box">', unsafe_allow_html=True)
+    st.markdown('<div class="about-box">', unsafe_allow_html=True)
     st.markdown("## About this App")
     st.markdown("""
 I've created this app at **11 PM**.  
@@ -115,9 +103,10 @@ Honestly... just felt like making something a little extra sweet and a little ex
 
 - Is your name WiFi?  
   *Because I’m feeling a connection.*  
-""")
+    """)
     st.markdown('</div>', unsafe_allow_html=True)
 
+# Neon stars background
 background_stars = ""
 for _ in range(80):
     while True:
@@ -160,5 +149,6 @@ if st.button("💌 Show Me a Message"):
     st.balloons()
     st.markdown("<div style='height:30px;'></div>", unsafe_allow_html=True)
 
+# Local audio playback
 with open("tumheho.mp3", "rb") as audio_file:
     st.audio(audio_file, format="audio/mp3")
