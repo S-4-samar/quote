@@ -65,25 +65,22 @@ template_css = """
     canvas {
         transform: scale(0.5);
     }
-    /* Sidebar Outer Blue Glow */
     section[data-testid="stSidebar"] {
         background: black !important;
-        border-right: 1px solid rgba(255,255,255,0.2);
         box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
     }
-    /* About Box Inside Sidebar with Mid-Red Neon */
     .sidebar-about-box {
-        padding: 15px;
+        padding: 20px;
+        margin: 10px;
         border-radius: 15px;
         background: rgba(255, 255, 255, 0.05);
         box-shadow: 
-            inset 0 0 10px #ff4444,
-            inset 0 0 20px #ff4444,
-            0 0 10px #ff4444;
+            inset 0 0 15px #ff3333,
+            inset 0 0 30px #ff3333,
+            0 0 20px #ff3333;
     }
     section[data-testid="stSidebar"] .block-container {
         color: #fff;
-        text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
     }
     @media screen and (max-width: 600px) {
         .quote-box {
@@ -102,7 +99,6 @@ template_css = """
 """
 st.markdown(template_css, unsafe_allow_html=True)
 
-# Sidebar with Mid-Red Neon Box
 with st.sidebar:
     st.markdown('<div class="sidebar-about-box">', unsafe_allow_html=True)
     st.markdown("## About this App")
@@ -122,7 +118,6 @@ Honestly... just felt like making something a little extra sweet and a little ex
 """)
     st.markdown('</div>', unsafe_allow_html=True)
 
-# Neon stars
 background_stars = ""
 for _ in range(80):
     while True:
