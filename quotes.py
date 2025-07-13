@@ -3,7 +3,6 @@ import random
 
 st.set_page_config(page_title="💖 Love Quote Generator", layout="centered")
 
-# Custom CSS for Neon Stars, UI, Sidebar, and Responsiveness
 template_css = """
     <style>
     body {
@@ -64,15 +63,23 @@ template_css = """
     canvas {
         transform: scale(0.5);
     }
-    /* Sidebar Neon */
+
+    /* Sidebar Outer Neon Effect */
     section[data-testid="stSidebar"] {
         background: black !important;
         border-right: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff, 0 0 45px #ff00ff;
     }
+
+    /* Sidebar Inner Neon Effect */
     section[data-testid="stSidebar"] .block-container {
         color: #fff;
-        text-shadow: 0 0 5px #f0f, 0 0 10px #f0f;
+        text-shadow: 
+            0 0 5px #ff00ff,
+            0 0 10px #ff00ff,
+            0 0 20px #ff00ff;
     }
+
     @media screen and (max-width: 600px) {
         .quote-box {
             font-size: 16px;
@@ -90,24 +97,23 @@ template_css = """
 """
 st.markdown(template_css, unsafe_allow_html=True)
 
-# Sidebar content with naughty jokes
-st.sidebar.markdown("## About this App ")
+# Sidebar content with neon glow applied via CSS
+st.sidebar.markdown("## About this App")
 st.sidebar.markdown("""
 I've created this app at **11 PM**.  
 Honestly... just felt like making something a little extra sweet and a little extra cheeky.  
 
 **Some Jokes 4 you:**  
 - Are you a campfire?  
-  *Because you’re hot and I want s’more.* 
+  *Because you’re hot and I want s’more.*
 
 - If kisses were snowflakes...  
   *I'd send you a blizzard.* ❄️
 
 - Is your name WiFi?  
-  *Because I’m feeling a connection.* 
+  *Because I’m feeling a connection.*
 """)
 
-# Neon stars
 background_stars = ""
 for _ in range(80):
     while True:
@@ -150,6 +156,5 @@ if st.button("💌 Show Me a Message"):
     st.balloons()
     st.markdown("<div style='height:30px;'></div>", unsafe_allow_html=True)
 
-# Local audio playback
 with open("tumheho.mp3", "rb") as audio_file:
     st.audio(audio_file, format="audio/mp3")
