@@ -3,8 +3,7 @@ import random
 
 st.set_page_config(page_title="💖 Love Quote Generator", layout="centered")
 
-# Custom CSS for Sidebar and About Box Effects
-st.markdown("""
+template_css = """
     <style>
     body {
         background: radial-gradient(circle at center, #1a1a1a, #000);
@@ -12,7 +11,6 @@ st.markdown("""
         font-family: 'Poppins', sans-serif;
         margin: 0;
     }
-
     .background-stars span {
         position: absolute;
         color: #fff;
@@ -20,12 +18,10 @@ st.markdown("""
         text-shadow: 0 0 3px #0ff, 0 0 6px #0ff, 0 0 12px #0ff;
         animation: blink 1.5s infinite alternate;
     }
-
     @keyframes blink {
         0% { opacity: 0.2; }
         100% { opacity: 1; }
     }
-
     div.stButton > button {
         width: 100%;
         max-width: 300px;
@@ -34,18 +30,16 @@ st.markdown("""
         font-size: 18px;
         padding: 12px 20px;
         border-radius: 50px;
+        transition: all 0.3s ease-in-out;
         box-shadow: 0px 4px 15px rgba(0, 255, 255, 0.5);
         margin: auto;
         display: block;
-        transition: 0.3s;
     }
-
     div.stButton > button:hover {
         transform: scale(1.05);
         box-shadow: 0px 6px 20px rgba(0, 255, 255, 0.8);
         cursor: pointer;
     }
-
     .quote-box {
         padding: 20px;
         border-radius: 20px;
@@ -62,31 +56,28 @@ st.markdown("""
         margin-right: auto;
         text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
     }
-
     h1 {
         text-align: center;
         color: white;
         font-size: 28px;
         text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
     }
-
     canvas {
         transform: scale(0.5);
     }
 
-    /* Sidebar Blue Neon Outer Glow */
+    /* Sidebar Outer and Inner Neon Blue */
     section[data-testid="stSidebar"] {
         background: black !important;
-        border-right: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 0 20px #00f, 0 0 40px #00f;
+        border-right: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
     }
-
-    /* About Box Red Inner Glow */
-    .about-box {
-        padding: 20px;
-        border-radius: 15px;
-        background: rgba(255, 255, 255, 0.04);
-        box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.7), inset 0 0 40px rgba(255, 0, 0, 0.5);
+    section[data-testid="stSidebar"] .block-container {
+        color: #fff;
+        text-shadow: 
+            0 0 5px #00ffff,
+            0 0 10px #00ffff,
+            0 0 20px #00ffff;
     }
 
     @media screen and (max-width: 600px) {
@@ -103,13 +94,12 @@ st.markdown("""
         }
     }
     </style>
-""", unsafe_allow_html=True)
+"""
+st.markdown(template_css, unsafe_allow_html=True)
 
-# Sidebar with Neon Effects
-with st.sidebar:
-    st.markdown('<div class="about-box">', unsafe_allow_html=True)
-    st.markdown("## About this App")
-    st.markdown("""
+# Sidebar content with blue neon glow
+st.sidebar.markdown("## About this App")
+st.sidebar.markdown("""
 I've created this app at **11 PM**.  
 Honestly... just felt like making something a little extra sweet and a little extra cheeky.  
 
@@ -122,10 +112,9 @@ Honestly... just felt like making something a little extra sweet and a little ex
 
 - Is your name WiFi?  
   *Because I’m feeling a connection.*  
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
+""")
 
-# Background Stars
+# Neon stars background
 background_stars = ""
 for _ in range(80):
     while True:
