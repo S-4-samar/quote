@@ -25,59 +25,59 @@ template_css = """
     div.stButton > button {
         width: 100%;
         max-width: 300px;
-        background: linear-gradient(to right, #ff416c, #ff4b2b);
+        background: linear-gradient(to right, #0ff, #08f);
         color: white;
         font-size: 18px;
         padding: 12px 20px;
         border-radius: 50px;
         transition: all 0.3s ease-in-out;
-        box-shadow: 0px 4px 15px rgba(255, 65, 108, 0.5);
+        box-shadow: 0px 4px 15px rgba(0, 255, 255, 0.5);
         margin: auto;
         display: block;
     }
     div.stButton > button:hover {
         transform: scale(1.05);
-        box-shadow: 0px 6px 20px rgba(255, 65, 108, 0.8);
+        box-shadow: 0px 6px 20px rgba(0, 255, 255, 0.8);
         cursor: pointer;
     }
     .quote-box {
         padding: 20px;
         border-radius: 20px;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
         color: white;
         font-size: 18px;
         text-align: center;
         margin-top: 20px;
-        box-shadow: 0px 8px 32px 0 rgba(255, 65, 108, 0.5);
+        box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
         backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.18);
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+        text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
     }
     h1 {
         text-align: center;
         color: white;
         font-size: 28px;
+        text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
     }
     canvas {
         transform: scale(0.5);
     }
 
-    /* Sidebar Outer Neon Effect */
+    /* Sidebar Outer and Inner Neon Blue */
     section[data-testid="stSidebar"] {
         background: black !important;
         border-right: 1px solid rgba(255,255,255,0.2);
-        box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff, 0 0 45px #ff00ff;
+        box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
     }
-
-    /* Sidebar Inner Neon Effect */
     section[data-testid="stSidebar"] .block-container {
         color: #fff;
         text-shadow: 
-            0 0 5px #ff00ff,
-            0 0 10px #ff00ff,
-            0 0 20px #ff00ff;
+            0 0 5px #00ffff,
+            0 0 10px #00ffff,
+            0 0 20px #00ffff;
     }
 
     @media screen and (max-width: 600px) {
@@ -97,7 +97,7 @@ template_css = """
 """
 st.markdown(template_css, unsafe_allow_html=True)
 
-# Sidebar content with neon glow applied via CSS
+# Sidebar content with blue neon glow
 st.sidebar.markdown("## About this App")
 st.sidebar.markdown("""
 I've created this app at **11 PM**.  
@@ -105,15 +105,16 @@ Honestly... just felt like making something a little extra sweet and a little ex
 
 **Some Jokes 4 you:**  
 - Are you a campfire?  
-  *Because you’re hot and I want s’more.*
+  *Because you’re hot and I want s’more.*  
 
 - If kisses were snowflakes...  
-  *I'd send you a blizzard.* ❄️
+  *I'd send you a blizzard.* ❄️  
 
 - Is your name WiFi?  
-  *Because I’m feeling a connection.*
+  *Because I’m feeling a connection.*  
 """)
 
+# Neon stars background
 background_stars = ""
 for _ in range(80):
     while True:
