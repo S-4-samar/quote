@@ -100,7 +100,7 @@ st.markdown(template_css, unsafe_allow_html=True)
 # Sidebar content with blue neon glow
 st.sidebar.markdown("## About this App")
 st.sidebar.markdown("""
-I've created this app at **11 PM**.  
+I've created this  at **Mid Night**.  
 Honestly... just felt like making something a little extra sweet and a little extra cheeky.  
 
 **Some Jokes 4 you:**  
