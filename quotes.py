@@ -3,7 +3,8 @@ import random
 
 st.set_page_config(page_title="💖 Love Quote Generator", layout="centered")
 
-template_css = """
+# Inject custom CSS
+st.markdown("""
     <style>
     body {
         background: radial-gradient(circle at center, #1a1a1a, #000);
@@ -65,27 +66,26 @@ template_css = """
     canvas {
         transform: scale(0.5);
     }
+
+    /* Sidebar Outer Neon Blue */
     section[data-testid="stSidebar"] {
         background: black !important;
         border-right: 1px solid rgba(255,255,255,0.2);
         box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
-    }
-    section[data-testid="stSidebar"] .block-container {
         padding: 0;
     }
+
+    /* Sidebar Inner Box Red Neon */
     .about-box {
         padding: 20px;
-        height: 95vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        border: 2px solid cyan;
+        margin: 15px;
         border-radius: 15px;
         background: rgba(0, 0, 0, 0.5);
-        box-shadow: inset 0 0 20px red;
+        box-shadow: inset 0 0 15px red;
         color: #fff;
-        text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+        text-shadow: 0 0 5px red;
     }
+
     @media screen and (max-width: 600px) {
         .quote-box {
             font-size: 16px;
@@ -98,27 +98,30 @@ template_css = """
             font-size: 16px;
             padding: 12px;
         }
-        .about-box {
-            height: auto;
-            font-size: 13px;
-        }
     }
     </style>
-"""
-
-st.markdown(template_css, unsafe_allow_html=True)
-
-with st.sidebar:
-    st.markdown("""
-<div style='margin-top: 20px;'>
-    <h2>Some Jokes 4 You:</h2>
-    <p> Are you a campfire?<br><em>Because you’re hot and I want s’more.</em></p>
-    <p> If kisses were snowflakes...<br><em>I’d send you a blizzard.</em></p>
-    <p> Is your name WiFi?<br><em>Because I’m feeling a connection.</em></p>
-</div>
 """, unsafe_allow_html=True)
 
+# Sidebar content
+with st.sidebar:
+    st.markdown('<div class="about-box">', unsafe_allow_html=True)
+    st.markdown("## About this App", unsafe_allow_html=True)
+    st.markdown("""
+    I’ve created this app at **11 PM**.  
+    Honestly... just felt like making something a little extra sweet and a little extra cheeky.  
+    """, unsafe_allow_html=True)
 
+    st.markdown("""
+    <div style='margin-top: 20px;'>
+        <h2>Some Jokes 4 You:</h2>
+        <p>🔥 Are you a campfire?<br><em>Because you’re hot and I want s’more.</em></p>
+        <p>❄️ If kisses were snowflakes...<br><em>I’d send you a blizzard.</em></p>
+        <p>📶 Is your name WiFi?<br><em>Because I’m feeling a connection.</em></p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# Neon stars background
 background_stars = ""
 for _ in range(80):
     while True:
@@ -127,7 +130,6 @@ for _ in range(80):
         if not (40 < left < 60 and 35 < top < 65):
             background_stars += f"<span style='left:{left}vw; top:{top}vh;'>★</span>"
             break
-
 st.markdown(f"<div class='background-stars'>{background_stars}</div>", unsafe_allow_html=True)
 
 st.markdown("<h1>My Friend 👦🏻</h1>", unsafe_allow_html=True)
